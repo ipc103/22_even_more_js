@@ -1,12 +1,12 @@
 $.ajax({url: userApi(username)})
   .then(function(data) {
-    log.success(data);
+    console.log( success(data) );
     return $.ajax({url: data.repos_url});
   }).then(function(data) {
     var mostPopular = _.max(data, function(repo) { return repo.stargazers_count; })
     return $.ajax({url: mostPopular.issues_url.replace('{/number}', '')})
   }).then(function(data) {
-    log.success(data);
+    console.log( data );
   });
 
 // Using Named functions
